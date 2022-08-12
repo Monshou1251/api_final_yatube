@@ -30,6 +30,10 @@ class Group(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Group'
+        verbose_name_plural = 'Groups'
+
 
 class Comment(models.Model):
     author = models.ForeignKey(
@@ -39,6 +43,10 @@ class Comment(models.Model):
     text = models.TextField()
     created = models.DateTimeField(
         'Дата добавления', auto_now_add=True, db_index=True)
+
+    class Meta:
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
 
 
 class Follow(models.Model):
@@ -58,3 +66,5 @@ class Follow(models.Model):
             fields=('user', 'following'),
             name='unique_users',
         ),)
+        verbose_name = 'Follow'
+        verbose_name_plural = 'Followers'

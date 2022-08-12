@@ -15,7 +15,6 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     pagination_class = LimitOffsetPagination
-    # throttle_classes = (AnonRateThrottle,)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
@@ -34,7 +33,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+    permission_classes = (permissions.AllowAny, )
 
 
 class CommentViewSet(viewsets.ModelViewSet):
